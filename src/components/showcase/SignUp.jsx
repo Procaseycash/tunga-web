@@ -131,7 +131,7 @@ class SignUp extends React.Component {
                                     name="signup"
                                     role="form"
                                     ref="signup_form">
-                                    {is_pre_approved ? null : (
+                                    {/*is_pre_approved ? null : (
                                         <div>
                                             <p className="text-center">Sign up with</p>
 
@@ -142,7 +142,7 @@ class SignUp extends React.Component {
 
                                             <p className="text-center">or</p>
                                         </div>
-                                    )}
+                                    )*/}
 
                                     {Auth.isRegistering ? <Progress /> : null}
 

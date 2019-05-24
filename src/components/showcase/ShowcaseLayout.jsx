@@ -24,6 +24,7 @@ import Join from "./Join";
 import InterestPollDetailContainer from "../dashboard/projects/InterestPollDetailContainer";
 import InterestPoll from "./InterestPoll";
 import WhitePaper from "./WhitePaper";
+import ResearchPaper from "./ResearchPaper";
 
 export default class ShowcaseLayout extends React.Component {
 
@@ -110,6 +111,7 @@ export default class ShowcaseLayout extends React.Component {
                     <Route path={wrapPath('/agreement')} component={Agreement}/>
                     <Route path={wrapPath('/code-of-conduct')} component={CodeOfConduct}/>
                     <Route path={wrapPath('/whitepapers/best-african-countries-for-sourcing-software-developers-in-2019')} component={WhitePaper} />
+                    <Route path={wrapPath('/researchpapers/how-to-use-remote-workers-for-scaling-your-software-development-team')} component={ResearchPaper} />
                     <Route exact path='/poll/:id/:token' render={props =>
                         <InterestPollDetailContainer pollId={props.match.params.id} >
                             <InterestPoll {...props}/>

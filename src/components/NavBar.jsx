@@ -107,8 +107,8 @@ export default class NavBar extends React.Component {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to={proxySafeUrl("/whitepapers/best-african-countries-for-sourcing-software-developers-in-2019")} activeClassName="active">
-                                    Whitepaper
+                                <NavLink to={proxySafeUrl("/researchpapers/how-to-use-remote-workers-for-scaling-your-software-development-team/")} activeClassName="active">
+                                    Research Paper
                                 </NavLink>
                             </li>
                             <li>

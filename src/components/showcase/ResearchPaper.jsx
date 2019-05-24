@@ -1,17 +1,17 @@
 import React from 'react';
-import { Row, Col, Container, FormGroup } from 'reactstrap';
+import {Row, Col, Container, FormGroup} from 'reactstrap';
 
 import Header from "./elements/Header";
 import Footer from "./elements/Footer";
 import Input from "../core/Input";
 import Button from "../core/Button";
-import PreviewImage from "../../assets/images/showcase/preview.png";
+import ResearchImage from "../../assets/images/showcase/research.png";
 import CountrySelector from '../core/CountrySelector';
 import connect from '../../connectors/ProfileConnector';
-import { isBusinessEmail } from '../utils/search';
-import  FieldError from '../core/FieldError';
+import {isBusinessEmail} from '../utils/search';
+import FieldError from '../core/FieldError';
 
-class WhitePaper extends React.Component {
+class ResearchPaper extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -20,17 +20,17 @@ class WhitePaper extends React.Component {
             company: '',
             country: '',
             email: '',
-            paper: 'best_african_countries_for_outsourcing',
             phone_number: '',
+            paper: 'scaling_your_team_with_remote_developers',
             error: false
-        }
+        };
     }
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.Profile && nextProps.Profile.isSaved.visitors) {
             const downloadLink = nextProps.Profile.isSaved.visitors.download_url;
 
-            if(!window.open(downloadLink)) {
+            if (!window.open(downloadLink)) {
                 window.location.href = downloadLink;
             }
         }
@@ -38,7 +38,7 @@ class WhitePaper extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const { first_name, last_name, email, phone_number, country, company } = this.state;
+        const {first_name, last_name, email, phone_number, country, company, paper} = this.state;
         if (isBusinessEmail(email)) {
             this.props.ProfileActions.createVisitor({
                 first_name,
@@ -46,10 +46,11 @@ class WhitePaper extends React.Component {
                 email,
                 phone_number,
                 country,
-                company
+                company,
+                paper,
             });
         } else {
-            this.setState({ error: true })
+            this.setState({error: true});
         }
     };
 
@@ -64,74 +65,76 @@ class WhitePaper extends React.Component {
     }
 
     render() {
-        let title = "Whitepaper: Best African countries for sourcing software developers in 2019";
-        const { first_name, last_name, company, email, country, phone_number } = this.state;
+        let title = `From startup to scaleup: How to use remote workers for scaling your software development team `;
+        const {first_name, last_name, company, email, country, phone_number} = this.state;
         return (
             <div className="white-paper">
-                <Header title={title} description={null} showCTA={false} className="txt-center" />
+                <Header title={title} description={null} showCTA={false} className="txt-center"/>
                 <Container className="paper-container">
                     <Row>
                         <Col sm={7} className="spacing">
-                            <p>The African continent is emerging as a region for sourcing software developers that
-                                still has a lot of untapped potential. Tech giants like Google and Microsoft are investing
-                                significantly to get African tech talent into their ecosystems. It's getting increasingly difficult to hire good
-                                software developers, so the African talent pool could turn out to be an interesting opportunity.</p>
-                            <p>But where to start? Download our whitepaper and get the hard numbers on sourcing software programmers from Africa:</p>
+                            <p>Nowadays, scaling your business almost always requires using IT. Without software
+                                development no growth. Which explains why there is such a big shortage: 83% of companies
+                                have trouble finding tech talent. So what to do?</p>
+                            <p>Tech companies increasingly choose to mobilize remote workers and work with distributed
+                                teams. In this research report, we explore what are the best ways for startups and
+                                scaleups to deal with the shortage of tech talent:</p>
                             <ul>
-                                <li>Which African countries have the largest software developers pool?</li>
-                                <li>Where are the developers most proficient in English?</li>
-                                <li>What is the salary level and how does it differ between countries?</li>
-                                <li>Which countries have the most potential moving forward in terms of business and innovation climate?</li>
-                                <li>What software languages and frameworks are most popular in which African country?</li>
+                                <li>What does it take to grow from startup to scaleup?</li>
+                                <li>How to grow your software team?</li>
+                                <li>How to use outsourcing to stay flexible?</li>
+                                <li>Why is remote work becoming so popular?</li>
+                                <li>How to organize software projects with distributed teams?</li>
                             </ul>
                         </Col>
                         <Col sm={1}/>
                         <Col sm={4} className="spacing">
-                            <p>Please fill in this form to download the Whitepaper</p>
+                            <p>Please fill in this form to download the research report</p>
                             <form onSubmit={this.handleSubmit}>
                                 <FormGroup>
                                     <Input placeholder="First name"
-                                        required
-                                        value={first_name}
-                                        onChange={this.onChangeField.bind(this, 'first_name')}
+                                           required
+                                           value={first_name}
+                                           onChange={this.onChangeField.bind(this, 'first_name')}
                                     />
                                 </FormGroup>
                                 <FormGroup>
                                     <Input placeholder="Last name"
-                                        required
-                                        value={last_name}
-                                        onChange={this.onChangeField.bind(this, 'last_name')}
+                                           required
+                                           value={last_name}
+                                           onChange={this.onChangeField.bind(this, 'last_name')}
                                     />
                                 </FormGroup>
                                 <FormGroup>
                                     <Input placeholder="Company/Organization"
-                                        required
-                                        value={company}
-                                        onChange={this.onChangeField.bind(this, 'company')}
+                                           required
+                                           value={company}
+                                           onChange={this.onChangeField.bind(this, 'company')}
                                     />
                                 </FormGroup>
                                 <FormGroup>
                                     {this.state.error && <FieldError message="Please fill in valid business email"/>}
                                     <Input placeholder="Business email"
-                                        required
-                                        type="email"
-                                        value={email}
-                                        onChange={this.onChangeField.bind(this, 'email')}
+                                           required
+                                           type="email"
+                                           value={email}
+                                           onChange={this.onChangeField.bind(this, 'email')}
                                     />
                                 </FormGroup>
                                 <FormGroup>
                                     <Input placeholder="Phone number"
-                                        required
-                                        value={phone_number}
-                                        onChange={this.onChangeField.bind(this, 'phone_number')}
+                                           required
+                                           value={phone_number}
+                                           onChange={this.onChangeField.bind(this, 'phone_number')}
                                     />
                                 </FormGroup>
                                 <FormGroup>
                                     <CountrySelector value={country}
-                                        onChange={this.onChangeField.bind(this, 'country')}
-                                        required/>
+                                                     onChange={this.onChangeField.bind(this, 'country')}
+                                                     required/>
                                 </FormGroup>
-                                <Button className="btn-block" type="submit" disabled={this.props.Profile.isSaving.visitors}>Download</Button>
+                                <Button className="btn-block" type="submit"
+                                        disabled={this.props.Profile.isSaving.visitors}>Download</Button>
                             </form>
                             <p className="subscribe">
                                 By submitting this form, you agree that we may contact you by mail,
@@ -139,7 +142,8 @@ class WhitePaper extends React.Component {
                                 Tunga services. If you already have an account at Tunga, you can control the
                                 messages you receive from us in your settings. If you are a guest visitor,
                                 you can unsubscribe from Tunga marketing messages any time by clicking the
-                                unsubscribe button in the e-mail or by sending us an e-mail to <a href="mailto:hello@tunga.io">hello@tunga.io</a>
+                                unsubscribe button in the e-mail or by sending us an e-mail to <a
+                                href="mailto:hello@tunga.io">hello@tunga.io</a>
                                 &nbsp;with the word “Unsubscribe” in the subject. To learn more, please visit Tunga’s
                                 privacy policy page.
                             </p>
@@ -147,7 +151,7 @@ class WhitePaper extends React.Component {
                     </Row>
                     <Row className="preview-image">
                         <Col sm={7}>
-                            <img src={PreviewImage} className="img-fluid" />
+                            <img src={ResearchImage} className="img-fluid"/>
                         </Col>
                     </Row>
                 </Container>
@@ -157,4 +161,4 @@ class WhitePaper extends React.Component {
     }
 }
 
-export default connect(WhitePaper);
+export default connect(ResearchPaper);
