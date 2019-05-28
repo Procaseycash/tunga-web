@@ -57,7 +57,12 @@ class WhitePaper extends React.Component {
         let newState = {};
         if (key === 'country') {
             newState[key] = e;
-        } else {
+        } else if (key === "email") {
+            console.log(e)
+            this.setState({ error: false });
+            newState[key] = e.target.value;
+        } 
+        else {
             newState[key] = e.target.value;
         }
         this.setState(newState);
