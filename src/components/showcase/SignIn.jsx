@@ -36,11 +36,15 @@ class SignIn extends React.Component {
                 <header className="height-100">
                     <div className="container">
                         <form onSubmit={this.onSignIn} name="signin" role="signin">
+
+                            <h2 className="text-center">Sign In</h2>
+                            {/*
                             <p className="text-center">Sign in with</p>
 
                             <SocialSignIn />
 
                             <p className="text-center">or</p>
+                            */}
 
                             {Auth.isAuthenticating ? <Progress /> : ''}
                             {Auth.error.auth ? (

@@ -3823,11 +3823,12 @@ textarea {
 
     .white-paper {
         header {
-            background-image: url('../assets/images/showcase/bgwhitepaper.jpg');
+            background-image: url('../assets/images/showcase/bgresearchpaper.jpg');
         }
         .showcase-title {
             text-align: center;
             line-height: 5rem;
+            font-size: 2.5rem;
         }
         .paper-container {
             margin-top: 4rem;
@@ -3847,7 +3848,7 @@ textarea {
         }
 
         .preview-image {
-            margin-top: -17rem;
+            margin-top: -22rem;
         }
 
     }
